@@ -210,3 +210,16 @@ export const transcribeVoiceAudio = async (
     await mediaAttachmentCache?.cleanup?.();
   }
 };
+
+// Wrapper for route handler
+export const transcribeVoiceWithOpenClaw = async ({
+  buffer,
+  fileName,
+  mimeType,
+}: {
+  buffer: Buffer;
+  fileName: string;
+  mimeType: string;
+}): Promise<OpenClawVoiceTranscriptionResult> => {
+  return transcribeVoiceAudio(buffer, mimeType);
+};
