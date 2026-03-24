@@ -6,6 +6,7 @@ export const OFFICE_INTERACTION_TARGETS = [
   "qa_lab",
   "sms_booth",
   "phone_booth",
+  "trading_room",
 ] as const;
 
 export type OfficeInteractionTargetId = (typeof OFFICE_INTERACTION_TARGETS)[number];
@@ -15,6 +16,7 @@ export const OFFICE_SKILL_TRIGGER_MOVEMENT_TARGETS = [
   "github",
   "gym",
   "qa_lab",
+  "trading",
 ] as const;
 
 export type OfficeSkillTriggerMovementTarget =
@@ -24,7 +26,8 @@ type OfficeSkillTriggerAnimationHoldKey =
   | "deskHoldByAgentId"
   | "githubHoldByAgentId"
   | "gymHoldByAgentId"
-  | "qaHoldByAgentId";
+  | "qaHoldByAgentId"
+  | "tradingHoldByAgentId";
 
 export const OFFICE_SKILL_TRIGGER_PLACE_REGISTRY: Record<
   OfficeSkillTriggerMovementTarget,
@@ -55,6 +58,11 @@ export const OFFICE_SKILL_TRIGGER_PLACE_REGISTRY: Record<
     label: "QA Lab",
     interactionTarget: "qa_lab",
     animationHoldKey: "qaHoldByAgentId",
+  },
+  trading: {
+    label: "Trading Room",
+    interactionTarget: "trading_room",
+    animationHoldKey: "tradingHoldByAgentId",
   },
 };
 
@@ -95,6 +103,7 @@ export const buildOfficeSkillTriggerHoldMaps = (
   gymHoldByAgentId: Record<string, boolean>;
   qaHoldByAgentId: Record<string, boolean>;
   skillGymHoldByAgentId: Record<string, boolean>;
+  tradingHoldByAgentId: Record<string, boolean>;
 } => {
   const next = {
     deskHoldByAgentId: {} as Record<string, boolean>,
@@ -102,6 +111,7 @@ export const buildOfficeSkillTriggerHoldMaps = (
     gymHoldByAgentId: {} as Record<string, boolean>,
     qaHoldByAgentId: {} as Record<string, boolean>,
     skillGymHoldByAgentId: {} as Record<string, boolean>,
+    tradingHoldByAgentId: {} as Record<string, boolean>,
   };
 
   for (const [agentId, target] of Object.entries(movementTargetByAgentId)) {

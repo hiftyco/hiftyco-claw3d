@@ -105,6 +105,7 @@ import { AnalyticsPanel } from "@/features/office/components/panels/AnalyticsPan
 import { HistoryPanel } from "@/features/office/components/panels/HistoryPanel";
 import { InboxPanel } from "@/features/office/components/panels/InboxPanel";
 import { PlaybooksPanel } from "@/features/office/components/panels/PlaybooksPanel";
+import { TradingImmersiveScreen } from "@/features/office/screens/TradingImmersiveScreen";
 import { SkillsMarketplaceModal } from "@/features/office/components/panels/SkillsMarketplaceModal";
 import { useOfficeSkillTriggers } from "@/features/office/hooks/useOfficeSkillTriggers";
 import { useOfficeSkillsMarketplace } from "@/features/office/hooks/useOfficeSkillsMarketplace";
@@ -3420,6 +3421,7 @@ export function OfficeScreen({
               }}
             />
           }
+          tradingPanel={<TradingImmersiveScreen />}
         />
       ) : null}
 

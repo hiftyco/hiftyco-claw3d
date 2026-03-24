@@ -4,10 +4,13 @@ import {
   EAST_WING_DOOR_Y,
   EAST_WING_ROOM_HEIGHT,
   EAST_WING_ROOM_TOP_Y,
+  EAST_WING_ROOM_BOTTOM_WALL_Y,
   GYM_ROOM_END_X,
   GYM_ROOM_X,
   QA_LAB_END_X,
   QA_LAB_X,
+  TRADING_ROOM_END_X,
+  TRADING_ROOM_X,
   WALL_THICKNESS,
 } from "@/features/retro-office/core/constants";
 import { nextUid } from "@/features/retro-office/core/geometry";
@@ -392,6 +395,62 @@ const DEFAULT_QA_LAB_ITEMS: FurnitureSeed[] = [
   { type: "plant", x: 1496, y: 622 },
 ];
 
+// Trading Room - for HiftyCo Bitcoin Trading
+const DEFAULT_TRADING_ROOM_ITEMS: FurnitureSeed[] = [
+  {
+    type: "wall",
+    x: TRADING_ROOM_X,
+    y: EAST_WING_ROOM_TOP_Y,
+    w: WALL_THICKNESS,
+    h: 220,
+  },
+  {
+    type: "door",
+    x: TRADING_ROOM_X + 100,
+    y: 280,
+    w: DOOR_LENGTH,
+    h: DOOR_THICKNESS,
+    facing: 90,
+  },
+  {
+    type: "wall",
+    x: TRADING_ROOM_X,
+    y: 300,
+    w: WALL_THICKNESS,
+    h: 380,
+  },
+  {
+    type: "wall",
+    x: TRADING_ROOM_X,
+    y: EAST_WING_ROOM_TOP_Y,
+    w: TRADING_ROOM_END_X - TRADING_ROOM_X + WALL_THICKNESS,
+    h: WALL_THICKNESS,
+  },
+  {
+    type: "wall",
+    x: TRADING_ROOM_X,
+    y: EAST_WING_ROOM_BOTTOM_WALL_Y,
+    w: TRADING_ROOM_END_X - TRADING_ROOM_X + WALL_THICKNESS,
+    h: WALL_THICKNESS,
+  },
+  {
+    type: "wall",
+    x: TRADING_ROOM_END_X,
+    y: EAST_WING_ROOM_TOP_Y,
+    w: WALL_THICKNESS,
+    h: EAST_WING_ROOM_HEIGHT,
+  },
+  // Trading screens
+  { type: "monitor", x: TRADING_ROOM_X + 50, y: 92, facing: 0 },
+  { type: "monitor", x: TRADING_ROOM_X + 100, y: 92, facing: 0 },
+  { type: "monitor", x: TRADING_ROOM_X + 150, y: 92, facing: 0 },
+  // Trading desk
+  { type: "desk", x: TRADING_ROOM_X + 80, y: 180, facing: 0 },
+  // Plants for decoration
+  { type: "plant", x: TRADING_ROOM_END_X - 20, y: 82 },
+  { type: "plant", x: TRADING_ROOM_END_X - 20, y: 622 },
+];
+
 const DEFAULT_ART_ROOM_ITEMS: FurnitureSeed[] = [
   { type: "wall", x: 260, y: 40, w: 8, h: 230 },
   { type: "wall", x: 260, y: 40, w: 178, h: 8 },
@@ -500,6 +559,7 @@ const DEFAULT_FURNITURE: FurnitureSeed[] = [
   ...DEFAULT_SERVER_ROOM_ITEMS,
   ...DEFAULT_GYM_ITEMS,
   ...DEFAULT_QA_LAB_ITEMS,
+  ...DEFAULT_TRADING_ROOM_ITEMS,
   ...DEFAULT_ART_ROOM_ITEMS,
   DEFAULT_SMS_BOOTH,
   { type: "chair", x: 100, y: 200, facing: 180 },

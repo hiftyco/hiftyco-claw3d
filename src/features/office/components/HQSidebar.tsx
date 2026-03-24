@@ -6,7 +6,8 @@ export type HQSidebarTab =
   | "inbox"
   | "history"
   | "playbooks"
-  | "analytics";
+  | "analytics"
+  | "trading";
 
 type HQSidebarProps = {
   open: boolean;
@@ -20,6 +21,7 @@ type HQSidebarProps = {
   historyPanel: ReactNode;
   playbooksPanel: ReactNode;
   analyticsPanel: ReactNode;
+  tradingPanel: ReactNode;
 };
 
 const TAB_LABELS: Record<HQSidebarTab, string> = {
@@ -27,9 +29,10 @@ const TAB_LABELS: Record<HQSidebarTab, string> = {
   history: "History",
   playbooks: "Playbooks",
   analytics: "Analytics",
+  trading: "📈 Trading",
 };
 
-const PRIMARY_TABS: HQSidebarTab[] = ["inbox", "history", "playbooks"];
+const PRIMARY_TABS: HQSidebarTab[] = ["inbox", "history", "playbooks", "trading"];
 
 export function HQSidebar({
   open,
@@ -43,6 +46,7 @@ export function HQSidebar({
   historyPanel,
   playbooksPanel,
   analyticsPanel,
+  tradingPanel,
 }: HQSidebarProps) {
   const analyticsOnly = activeTab === "analytics";
   const railOnly = analyticsOnly;
@@ -53,7 +57,9 @@ export function HQSidebar({
         ? historyPanel
         : activeTab === "playbooks"
           ? playbooksPanel
-          : analyticsPanel;
+          : activeTab === "trading"
+            ? tradingPanel
+            : analyticsPanel;
 
   return (
     <aside className="pointer-events-none fixed inset-y-0 right-0 z-20 flex justify-end">
