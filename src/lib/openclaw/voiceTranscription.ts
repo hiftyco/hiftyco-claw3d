@@ -93,7 +93,7 @@ export type OpenClawVoiceTranscriptionResult = {
   ignored: boolean;
 };
 
-let sdkPromise: Promise<OpenClawTranscriptionSdk> | null = null;
+let sdkPromise: Promise<OpenClawTranscriptionSdk | null> | null = null;
 
 const resolveInstalledOpenClawPackageRoot = (): string | null => {
   // openclaw is not available in Vercel - return null
